@@ -1,0 +1,44 @@
+default: &default
+  timeout: 60
+
+  #代理
+  http_proxy: false
+  http_proxyaddr: '127.0.0.1'
+  http_proxyport: 8080
+
+  #统一接口
+  endpoint: "http://210.22.123.69"
+
+  #ftp同步
+  ftp_server: 210.22.123.88
+  ftp_port: 21 
+  ftp_name: thenine
+  ftp_passwd: "w0st0e#123"
+
+  #沃豆、九城成长值
+  sns_endpoint: "http://221.226.179.187:6009/pcctest"
+  sns_source: "9" #应用商店 9
+  sns_authcode: "123456" #管理员权限验证
+  sns_channelid: '2' #1表示wostore|2表示九城
+
+
+  #store.wo.com.cn开发者
+  web_endpoint: "http://58.246.196.94:8982"
+  3dec_key: '123456abc'
+
+development:
+  app_key: 10000000
+  app_secret: 10000000
+  <<: *default
+
+
+production:
+  app_key: 10000000  
+  app_secret: 10000000
+  <<: *default
+
+
+test:
+  app_key: 10000000
+  app_secret: 10000000
+  <<: *default

@@ -1,0 +1,18 @@
+require File.expand_path(File.dirname(__FILE__) + '/../test_helper')
+require 'base64'
+
+
+class Jar3desTest < Test::Unit::TestCase
+
+  def test_decrypt
+    ENV['CUAPI_3DEC_KEY']  = '123456abc'
+    indata  ="eJyLevhtybqCre8tjxZ2sUyc/dfr1czCM0e+PTactm5Can4xe11Sis6Tncn1b3ZkHPrT9XuBt/KRa0c2dHltWWvQ5FlUcibXQaMyeu5LdtW9l486Gf6XVUgX2Vxg/C/Vi/PRBy9Z5R8lfJ7HXcQ+9DVwGfzKu3XO0Du68sekKYF//3vciV2YrtQuG7NTe2vR3ASYvI77pk2b2I77Lfya12rC7GnCUXTvSf6y5Fc5WTeYys9cOBwV/+JUYXivdNLeo8+upOifldse9X92y+RZN3dbHPvFeet7ycl9PeYBN24ZeespM5ewzlVWuJLwvXKDml1Jhs/5f21fM5Lu9SxVKWV+ZDt77nP3BYpuxsqpf4uUXPPS0n0XsWn+PfTz+GyXDVucfeeG3jv5WUvm55b5Px2+7LhSprL1TPBNW7U1Xt9WpT404KoU+bPpK7voN971StxlE1Vf7W/WurhToq8TZs7GXd+fBn5es/+owKaaxcWLFmssWuZqu+b823t1TzXabs1cbT/bSOOb7CVZjSijmESX/OlZKi1LzrEWxT3+emW6ywGRTn4L9b0rNlj/fVl9YldxdtLup8f7Xjh3rwvVKf9bwLHhr5khI8PKk7rz+Uq4ui1fRKw4cPhE3LG89cXnJvULdElVCziiu6+s7ev09/nL02IShA5dVAxU4ZOPnlx97XJhm+UzwZrLbAEArzgH+Q=="; 
+    outdata = "PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48cmV0dXJuTWVzc2FnZT48ZGF0YT48cm93Pjxwcm9kdWN0aW5kZXg+MTQzOTkyPC9wcm9kdWN0aW5kZXg+PHByb2R1Y3RuYW1lPuato+W4uOS9nOWTgea1i+ivlTwvcHJvZHVjdG5hbWU+PC9yb3c+PHJvdz48cHJvZHVjdGluZGV4PjE0Mzk0NDwvcHJvZHVjdGluZGV4Pjxwcm9kdWN0bmFtZT7mtYvor5UyMDEyMDcyNTwvcHJvZHVjdG5hbWU+PC9yb3c+PHJvdz48cHJvZHVjdGluZGV4PjE0Mzk0NTwvcHJvZHVjdGluZGV4Pjxwcm9kdWN0bmFtZT7mtYvor5UyMDEyMDcyNeaPkOS6pDwvcHJvZHVjdG5hbWU+PC9yb3c+PHJvdz48cHJvZHVjdGluZGV4PjE0NDA1NzwvcHJvZHVjdGluZGV4Pjxwcm9kdWN0bmFtZT7mgJ3mganml6U8L3Byb2R1Y3RuYW1lPjwvcm93Pjxyb3c+PHByb2R1Y3RpbmRleD4xNDQwNTk8L3Byb2R1Y3RpbmRleD48cHJvZHVjdG5hbWU+c3VwZXI8L3Byb2R1Y3RuYW1lPjwvcm93PjwvZGF0YT48L3JldHVybk1lc3NhZ2U+" 
+    result = ChinaUnicomApi::Jar3des.decrypt(ENV['CUAPI_3DEC_KEY'], indata).inspect
+    assert_equal Base64.decode64(result),Base64.decode64(outdata)
+  end
+
+
+
+
+end
